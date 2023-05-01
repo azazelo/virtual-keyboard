@@ -10,6 +10,29 @@
     max-width: 100%;
     margin: 0 auto;
     background-color:#ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0px;
+    overflow: hidden;
+    
+}
+.p{
+   margin: 0; 
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ArrowUp,
+.ArrowLeft,
+.ArrowDown,
+.ArrowRight{
+    margin: 0;
+}
+.spaces{
+    width: 10px;
+    height: 1px;
+}
+.tab{
+    width: 40px;
+    height: 1px; 
 }
 .keyboard{
     border:2px solid black; 
@@ -101,4 +124,11 @@
 .enter:hover,
 .probel:hover{
     background-color: lightgoldenrodyellow;
+}
+.activ{
+    background-color: lightgreen;
+}
+.div_enter{
+    width: 500px;
+    margin: 0;
 }

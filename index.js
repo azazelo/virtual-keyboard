@@ -14,11 +14,11 @@ let ant=[1025, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48,
 let ret =[96, 49, 50, 51, 52, 53, 
     54, 55, 56, 57, 48, 45, 61,
      81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 
-     91, 93, 65, 83, 68, 70, 71, 72, 74, 75, 76, 59, 39, 92, 92, 90,
+     91, 93, 92, 65, 83, 68, 70, 71, 72, 74, 75, 76, 59, 39,  90,
       88, 67, 86, 66, 78, 77, 44, 46, 47]
 function init(){
     let out ='';
-    for(let i=0; i< ant.length; i++){
+    for(let i=0; i< ret.length; i++){
         if(i==13){
             out+='<div class="antyui">' + 'Backspase' + '</div>'
             out+='<div class="guni">' + 'Tab' + '</div>'  
@@ -31,7 +31,7 @@ function init(){
             out+='<div class="enter">' + 'Enter' + '</div>'
             out+='<div class="antyui">' + 'Shift' + '</div>'  
         }
-            out+='<div class="an" data="' + ant[i] + '">' + (String.fromCharCode(ant[i])).toLowerCase() + '</div>'
+            out+='<div class="an" data="' + ret[i] + '">' + (String.fromCharCode(ret[i])).toLowerCase() + '</div>'
     }
             out+='<div class="antyu">' + '&uarr;' + '</div>'
             out+='<div class="enter">' + 'Shift' + '</div>'
@@ -47,10 +47,60 @@ function init(){
     keyboard.innerHTML=out
 }
 init()
-document.onkeypress=function(event){
+document.onkeypress=function  (event){
     console.log(event.code)
-    console.log(event.keyCode)
+    console.log(event.charCode)
+    console.log(event.charCode)
     let pen=(String.fromCharCode(event.keyCode)).toLowerCase()
-    iyp=iyp+pen
-    scrin.innerHTML=iyp.toLowerCase()
-}
+    let p = document.createElement('p');
+    p.className = "p";
+    p.innerHTML=pen;
+    scrin.append(p);
+    let peng=document.querySelector('.keyboard.an[data="' + event.charCode + '"]')
+    console.log(peng)
+} 
+document.addEventListener('keydown', function(event) {
+    if (event.code == 'Enter' ) {
+        let div_enter = document.createElement('div');
+        div_enter.className = "div_enter";
+        scrin.append(div_enter);
+    }
+    if (event.code == 'Space' ) {
+        let space = document.createElement('div');
+        space.className = "spaces";
+        scrin.append(space);
+    }
+    if (event.code == 'Tab' ) {
+        let tab = document.createElement('div');
+        tab.className = "tab";
+        scrin.append(tab);
+    }
+    if (event.code == 'ArrowUp' ) {
+        let ArrowUp = document.createElement('p');
+        ArrowUp.className = "ArrowUp";
+        ArrowUp.innerHTML='&uarr;';
+        scrin.append(ArrowUp);
+    }
+    if (event.code == 'ArrowLeft' ) {
+        let ArrowLeft = document.createElement('p');
+        ArrowLeft.className = "ArrowLeft";
+        ArrowLeft.innerHTML='&larr;';
+        scrin.append(ArrowLeft);
+    }
+    if (event.code == 'ArrowDown' ) {
+        let ArrowDown = document.createElement('p');
+        ArrowDown.className = "ArrowDown";
+        ArrowDown.innerHTML='&darr;';
+        scrin.append(ArrowDown);
+    }
+    if (event.code == 'ArrowRight' ) {
+        let ArrowRight = document.createElement('p');
+        ArrowRight.className = "ArrowRight";
+        ArrowRight.innerHTML='&rarr;';
+        scrin.append(ArrowRight);
+    }
+    if (event.code == 'Backspace' ) {
+        setTimeout(() => scrin.lastElementChild.remove(), 100);
+      }
+    console.log(event.code)
+  });
